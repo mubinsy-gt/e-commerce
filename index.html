@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LuxeLoom - E-Commerce Fashion Elegan</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <header>
+     <div class="logo">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="28" height="28" fill="currentColor">
+    <circle cx="32" cy="32" r="30" stroke="white" stroke-width="2" fill="none" />
+    <text x="50%" y="57%" text-anchor="middle" font-size="32" font-family="Poppins, sans-serif" fill="white" font-weight="600">L</text>
+  </svg>
+  <span class="logo-text">LuxeLoom</span>
+</div>
+
+        <nav>
+            <ul>
+                <li><a href="#" onclick="showSection('home')">Beranda</a></li>
+                <li><a href="#" onclick="showSection('products')">Produk</a></li>
+                <li><a href="#" onclick="showSection('about')">Tentang Kami</a></li>
+                <li><a href="#" onclick="showSection('contact')">Kontak</a></li>
+            </ul>
+        </nav>
+        <div class="cart-icon" onclick="showSection('cart')">
+            <span>🛒</span>
+            <span id="cart-count">0</span>
+        </div>
+    </header>
+
+    <main>
+<section id="home" class="active">
+    <div class="banner">
+        <div class="slider">
+            <img src="https://images.unsplash.com/photo-1512436991641-6745cdb1723f?auto=format&fit=crop&w=1350&q=80" alt="Fashion Elegan 1">
+        </div>
+        <div class="banner-text">
+            <h1>LuxeLoom – Gaya Elegan untuk Setiap Hari</h1>
+            <button onclick="showSection('products')">Belanja Sekarang</button>
+        </div>
+    </div>
+    <div class="promo-section">
+        <div class="promo-item">
+            <span class="icon">🚚</span>
+            <h3>Gratis Ongkir</h3>
+            <p>Untuk pembelian di atas Rp 500.000</p>
+        </div>
+        <div class="promo-item">
+            <span class="icon">💳</span>
+            <h3>Diskon 20%</h3>
+            <p>Untuk member baru</p>
+        </div>
+        <div class="promo-item">
+            <span class="icon">🔄</span>
+            <h3>Return Policy</h3>
+            <p>Garansi 30 hari</p>
+        </div>
+        <div class="promo-item">
+            <span class="icon">⭐</span>
+            <h3>Produk Terlaris</h3>
+            <p>Koleksi terbaik kami</p>
+        </div>
+    </div>
+    <div class="featured-products">
+        <h2>Produk Unggulan</h2>
+        <div class="featured-grid">
+            <div class="featured-item" onclick="addToCart(1)">
+                <img src="https://images.pexels.com/photos/3214769/pexels-photo-3214769.jpeg" alt="Kemeja Putih Elegan">
+                <h4>Kemeja Putih Elegan</h4>
+                <p>Rp 250.000</p>
+                <span class="discount">Diskon 10%</span>
+            </div>
+            <div class="featured-item" onclick="addToCart(3)">
+                <img src="https://dresslemuse.com/app/uploads/LeMuse-black-LUNA-linen-dress-2-4.jpg" alt="Dress Hitam Minimalis">
+                <h4>Dress Hitam Minimalis</h4>
+                <p>Rp 350.000</p>
+                <span class="discount">Diskon 15%</span>
+            </div>
+            <div class="featured-item" onclick="addToCart(5)">
+                <img src="https://moccaapedia.com/wp-content/uploads/2023/01/Jaket-Kulit.jpg" alt="Jaket Kulit Hitam">
+                <h4>Jaket Kulit Hitam</h4>
+                <p>Rp 450.000</p>
+                <span class="discount">Diskon 5%</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section id="products">
+  <h2>✨ Produk Kami ✨</h2>
+  <p class="subtitle">Temukan koleksi fashion elegan LuxeLoom yang cocok untuk setiap gaya.</p>
+<br>
+  <!-- Kategori Produk -->
+  <div class="categories">
+    <button class="active" onclick="filterProducts('all', this)">Semua</button>
+    <button onclick="filterProducts('Kemeja Pria', this)">Kemeja Pria</button>
+    <button onclick="filterProducts('Dress Wanita', this)">Dress Wanita</button>
+    <button onclick="filterProducts('Jaket', this)">Jaket</button>
+    <button onclick="filterProducts('Celana Stylish', this)">Celana Stylish</button>
+  </div>
+
+  <!-- Daftar Produk -->
+  <div id="product-list" class="product-grid">
+        </section>
+
+ <section id="cart" class="cart-section">
+  <h2>🛒 Keranjang Belanja Anda</h2>
+
+  <div id="cart-items" class="cart-items">
+      <!-- Item keranjang akan dimasukkan oleh JavaScript -->
+  </div>
+
+  <div id="cart-empty" class="cart-empty">
+      <img src="https://cdn-icons-png.flaticon.com/512/2038/2038854.png" alt="Keranjang Kosong">
+      <p>Keranjang Anda masih kosong 😢</p>
+      <button class="shop-now" onclick="showSection('products')">Belanja Sekarang</button>
+  </div>
+
+  <div class="cart-summary">
+      <h3 id="cart-total">Total: Rp 0</h3>
+      <button id="checkout-btn" class="checkout-btn" onclick="showSection('checkout')">
+          💳 Lanjut ke Pembayaran
+      </button>
+  </div>
+</section>
+
+        <section id="checkout" class="checkout-section">
+  <h2>💳 Checkout Pembayaran</h2>
+  <p class="checkout-subtitle">Isi data dengan benar agar pesananmu sampai tepat waktu 🕒</p>
+            
+  <div class="checkout-container">
+    <form id="checkout-form" class="checkout-form">
+      <div class="form-group">
+        <label>👤 Nama Lengkap</label>
+        <input type="text" placeholder="Masukkan nama lengkap kamu" required>
+      </div>
+
+      <div class="form-group">
+        <label>📍 Alamat Lengkap</label>
+        <textarea placeholder="Masukkan alamat lengkap pengiriman" required></textarea>
+      </div>
+
+      <div class="form-group">
+        <label>📞 Nomor HP</label>
+        <input type="tel" placeholder="08xxxxxxxxxx" required>
+      </div>
+
+      <div class="form-group">
+        <label>💰 Metode Pembayaran</label>
+        <select required>
+          <option value="">Pilih metode pembayaran</option>
+          <option value="Transfer Bank">🏦 Transfer Bank</option>
+          <option value="COD">🚚 Bayar di Tempat (COD)</option>
+          <option value="e-Wallet">📱 e-Wallet (Dana, OVO, GoPay)</option>
+        </select>
+      </div>
+
+      <!-- Tombol Bayar -->
+<button type="submit" class="pay-btn" onclick="showPaymentSuccess(event)">Bayar Sekarang 💸</button>
+
+<!-- Notifikasi Pembayaran -->
+<div id="paymentSuccess" class="popup">
+  <div class="popup-content">
+    ✅<br>
+    <span>Pembayaran Berhasil!</span>
+  </div>
+</div>
+
+    </form>
+
+    <div class="checkout-summary">
+      <h3>🛍️ Ringkasan Belanja</h3>
+      <ul id="checkout-summary-list">
+        <!-- List produk akan muncul di sini -->
+      </ul>
+      <p id="checkout-total">Total: Rp 0</p>
+    </div>
+  </div>
+</section>
+
+
+    <section id="about">
+  <h2>Tentang Kami</h2>
+  <div class="about-container">
+    <div class="about-image">
+      <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Fashion Elegan - LuxeLoom">
+    </div>
+
+    <div class="about-text">
+      <p>
+        <strong>LuxeLoom</strong> adalah brand fashion yang menghadirkan gaya elegan dan minimalis
+        untuk pria dan wanita. Kami berkomitmen menyediakan produk berkualitas tinggi
+        dengan desain <em>timeless</em> yang cocok untuk setiap kesempatan.
+      </p>
+      <p>
+        Kami percaya bahwa fashion bukan hanya tentang penampilan, tetapi juga tentang
+        kepercayaan diri dan kenyamanan. Setiap produk kami dipilih dengan hati-hati
+        untuk memastikan kualitas terbaik.
+      </p>
+
+      <div class="about-icons">
+        <div class="icon-item">
+          <i class="fas fa-tshirt"></i>
+          <p>Bahan Premium</p>
+        </div>
+        <div class="icon-item">
+          <i class="fas fa-heart"></i>
+          <p>Desain Elegan</p>
+        </div>
+        <div class="icon-item">
+          <i class="fas fa-globe"></i>
+          <p>Inspirasi Global</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Tambahkan di atas tag </body> -->
+<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+
+<section id="contact">
+  <h2>Hubungi Kami</h2>
+  <p class="contact-subtitle">
+    Kami siap membantu Anda! Hubungi kami melalui media sosial atau pesan langsung.
+  </p>
+
+  <div class="contact-container">
+    <div class="contact-info">
+      <p>
+        Tim <strong>LuxeLoom</strong> selalu siap menjawab pertanyaan Anda seputar produk, pesanan, maupun kerja sama.
+      </p>
+      <p>Jangan ragu untuk menghubungi kami melalui tombol di bawah ini:</p>
+
+      <div class="contact-buttons">
+        <a href="https://wa.me/6281234567890" target="_blank" class="contact-btn whatsapp">
+          <i class="fab fa-whatsapp"></i> WhatsApp
+        </a>
+        <a href="https://instagram.com/luxeloom" target="_blank" class="contact-btn instagram">
+          <i class="fab fa-instagram"></i> Instagram
+        </a>
+        <a href="mailto:cs@luxeloom.com" class="contact-btn email">
+          <i class="fas fa-envelope"></i> Email
+        </a>
+      </div>
+    </div>
+
+    <div class="contact-map">
+      <iframe 
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3965.5313534503102!2d107.0230392!3d-6.3251126!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69913c8d33307f%3A0x37cf78fb81f20974!2sWarkop%20manjada%20wajada!5e0!3m2!1sid!2sid!4v1760941692438!5m2!1sid!2sid"
+        width="100%" height="250" style="border:0;" allowfullscreen="" loading="lazy">
+      </iframe>
+    </div>
+  </div>
+</section>
+
+    </main>
+
+<footer class="footer">
+  <div class="footer-container">
+    <div class="footer-column">
+      <h2 class="footer-logo">LUXELOOM</h2>
+      <p>Sebagai pusat fashion online elegan, LuxeLoom menghadirkan koleksi pilihan terbaik dengan gaya tanpa batas. 
+        Kami berkomitmen untuk memperluas jangkauan fashion berkualitas untuk semua kalangan.</p>
+
+      <p><strong>Layanan Konsumen</strong><br>
+      E-mail: support@luxeloom.com<br>
+      Telepon: (021) 555-1234<br>
+      WhatsApp: +62 812-3456-7890</p>
+    </div>
+
+    <div class="footer-column">
+      <h3>LAYANAN</h3>
+      <ul>
+        <li><a href="#">Bantuan</a></li>
+        <li><a href="#">Cara Pengembalian</a></li>
+        <li><a href="#">Promo Partner Kami</a></li>
+        <li><a href="#">Konfirmasi Transfer</a></li>
+        <li><a href="#">Status Order</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-column">
+      <h3>TENTANG KAMI</h3>
+      <ul>
+        <li><a href="#">Tentang LuxeLoom</a></li>
+        <li><a href="#">Karir</a></li>
+        <li><a href="#">Kebijakan Privasi</a></li>
+        <li><a href="#">Syarat & Ketentuan</a></li>
+        <li><a href="#">Program Influencer</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-column">
+      <h3>BERGABUNG DENGAN LUXELOOM</h3>
+      <p>Dapatkan update fashion terbaru dan penawaran eksklusif dari kami.</p>
+      <input type="email" placeholder="Alamat email Kamu">
+      <div class="footer-buttons">
+        <button>WANITA</button>
+        <button>PRIA</button>
+      </div>
+      <p class="footer-note">Dengan mendaftar, Anda menyetujui kebijakan privasi kami.</p>
+    </div>
+  </div>
+
+    <div class="footer-social">
+  <h3>TEMUKAN KAMI</h3>
+  <div class="social-icons">
+    <a href="#"><i class="fab fa-facebook-f"></i></a>
+    <a href="#"><i class="fab fa-instagram"></i></a>
+    <a href="#"><i class="fab fa-twitter"></i></a>
+    <a href="#"><i class="fas fa-rss"></i></a>
+    <a href="#"><i class="fab fa-pinterest-p"></i></a>
+    <a href="#"><i class="fab fa-youtube"></i></a>
+    <a href="#"><i class="fab fa-apple"></i></a>
+    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+  </div>
+</div>
+
+
+  <p class="copyright">© 2025 LuxeLoom. Semua Hak Dilindungi.</p>
+</footer>
+
+<!-- Tambahkan FontAwesome -->
+<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+
+    <script src="script.js"></script>
+    
+</body>
+</html>
